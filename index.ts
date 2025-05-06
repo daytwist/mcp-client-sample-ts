@@ -104,14 +104,14 @@ class MCPClient {
           content: result.content as string,
         });
 
-        const response = await this.anthropic.messages.create({
+        const toolResponse = await this.anthropic.messages.create({
           model: "claude-3-5-sonnet-20241022",
           max_tokens: 1000,
           messages,
         });
 
         finalText.push(
-          response.content[0].type === "text" ? response.content[0].text : ""
+          toolResponse.content[0].type === "text" ? toolResponse.content[0].text : ""
         );
       }
     }
